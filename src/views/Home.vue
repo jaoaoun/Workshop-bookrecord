@@ -2,7 +2,11 @@
   <div class="container">
     <h1>My Book</h1>
     <div class="card-deck">
-      <my-card v-for="book in [1, 2, 3]" />
+      <my-card 
+      v-for="(book,index) in $store.state.books"
+          :bookDetail="book"
+          :index="index"
+      />
     </div>
   </div>
 </template>
