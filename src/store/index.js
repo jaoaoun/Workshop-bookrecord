@@ -15,7 +15,12 @@ export default new Vuex.Store({
     editBook(state,payload){
       state.books[payload.index] = payload.data
       //2)booksของเราเป็นarray เลยให้letไปที่indexของค่าที่editมา และให้มีค่า=data (คือใหม่ไปทับเก่าเลย)
+    }, //D1)ต้องการให้ลบได้มาสร้างฟังก์ชั่นdelete
+    deleteBook(state,payload){
+      //D2)ลบค่าค่านั้นออกจากarrayของเรา โดยเช็คจากindexโดยใช้splice
+      state.books.splice(payload,1)
     }
+
   },
   actions: {
     addBook({commit},payload){
@@ -24,6 +29,9 @@ export default new Vuex.Store({
     },
     editBook({commit},payload){
       commit("editBook",payload) //3)commitไปที่editBookแล้วส่งpayloadไป
+    },
+    deleteBook({commit},payload){ //D3)commitไปที่deleteBookแล้วส่งpayloadไป
+      commit("deleteBook",payload)
     }
   },
   modules: {
