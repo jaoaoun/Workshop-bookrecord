@@ -17,7 +17,8 @@
           </div>
           <div class="small-box">
             <router-link :to="'/edit-book/'+index" class="btn btn-primary">EDIT</router-link>
-            <a href="#" @click.prevent="deleteBook(index)" class="btn btn-danger">DELETE</a>
+            <a href="#" @click.prevent="confirmDelete(index)" class="btn btn-danger">DELETE</a>
+            <!-- สร้างการแจ้งเตือนก่อนลบเปลี่ยนจาก deleteBook(index) เป็น confirmDelete(index) -->
           <!-- D7)ถ้ามีการclickให้deleteBook ต้องส่งpayload(index)มาด้วยให้ลบได้ถูกอัน -->
           </div>
         </div>
@@ -35,7 +36,12 @@ export default {
   methods: { //D5)กดปุ่มแล้วทำการdelete เลยต้องไปเรียกaction deleteBook เลยมาสร้างmethods
     ...mapActions([ //D6)ทำการmapAction deleteBook
       "deleteBook"
-    ])
+    ]),
+    confirmDelete(index){ //แจ้งเตือนก่อนลบ
+      var confirm = window.confirm("Are you sure to delete this book");
+      if(confirm) this.deleteBook(index)
+      else return
+    }
   } 
 };
 </script>
