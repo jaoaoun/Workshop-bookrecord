@@ -16,7 +16,7 @@
             <small class="text-small rating"> RATING: <b>{{bookDetail.rating}}</b></small>
           </div>
           <div class="small-box">
-            <router-link class="btn btn-primary">EDIT</router-link>
+            <router-link :to="'/edit-book/'+index" class="btn btn-primary">EDIT</router-link>
             <a href="#" class="btn btn-danger">DELETE</a>
           </div>
         </div>
