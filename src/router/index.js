@@ -17,6 +17,11 @@ Vue.use(VueRouter)
     component: AddBook
   },
   {
+    path: '/edit-book/:id',
+    name: 'edit-book',
+    component: AddBook
+  },
+  {
     path: '/about',
     name: 'about',
     // route level code-splitting
