@@ -68,7 +68,7 @@
         placeholder="Book Image URL"
       />
     </div>
-    <button type="submit" class="btn btn-primary">ADD BOOK</button>
+    <button type="submit" class="btn btn-primary">{{textButton}}</button>
   </form>
 </template>
 
@@ -93,6 +93,12 @@ export default {
     ]),
     testSubmit(){
       console.log("name :",this.name,"desc :",this.description);
+    }
+  },
+  computed: {
+    textButton(){
+      if(this.$route.path == "/add-book") return "ADD BOOK"; //check path as add or edit
+      else return "EDIT BOOK"
     }
   },
   watch:{
