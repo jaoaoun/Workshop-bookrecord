@@ -83,7 +83,7 @@ export default {
       date: "",
       author: "",
       rating: 0,
-      cover: "",
+      cover: "https://data.whicdn.com/images/331489284/original.jpg",
       books: this.$store.state.books
     }
   },
