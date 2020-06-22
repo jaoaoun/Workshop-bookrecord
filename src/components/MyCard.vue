@@ -17,7 +17,8 @@
           </div>
           <div class="small-box">
             <router-link :to="'/edit-book/'+index" class="btn btn-primary">EDIT</router-link>
-            <a href="#" class="btn btn-danger">DELETE</a>
+            <a href="#" @click.prevent="deleteBook(index)" class="btn btn-danger">DELETE</a>
+          <!-- D7)ถ้ามีการclickให้deleteBook ต้องส่งpayload(index)มาด้วยให้ลบได้ถูกอัน -->
           </div>
         </div>
       </div>
@@ -26,9 +27,16 @@
 </template>
 
 <script>
+//D4)ยังไม่มีฟังก์ชั่นdelete ต้อง importมาก่อน
+import { mapActions } from "vuex";
 export default {
   name: "MyCard",
   props: ["bookDetail", "index"], //รับค่า store จาก Home มาเป็น props
+  methods: { //D5)กดปุ่มแล้วทำการdelete เลยต้องไปเรียกaction deleteBook เลยมาสร้างmethods
+    ...mapActions([ //D6)ทำการmapAction deleteBook
+      "deleteBook"
+    ])
+  } 
 };
 </script>
 
