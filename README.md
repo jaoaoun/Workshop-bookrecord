@@ -1,4 +1,6 @@
-# ws-bookrecord
+# Workshop : Bookrecord
+----------------------------------
+Learn course from futureskill
 
 ## Project setup
 ```
