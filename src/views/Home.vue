@@ -7,6 +7,7 @@
           :bookDetail="book"
           :index="index"
       /> 
+      <!-- เราต้องbindค่า :bookDetail="book" คือรับค่า objทั้งหมด -->
       <!-- for book in store / pull data from store -->
     </div> 
   </div>

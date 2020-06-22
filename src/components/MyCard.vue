@@ -28,7 +28,7 @@
 <script>
 export default {
   name: "MyCard",
-  props: ["bookDetail", "index"],
+  props: ["bookDetail", "index"], //รับค่า store จาก Home มาเป็น props
 };
 </script>
 
