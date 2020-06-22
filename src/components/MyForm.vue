@@ -76,36 +76,39 @@
 import { mapActions } from 'vuex';
 export default {
   name: "Form",
-  data: function(){
-    return {
+  data: function(){ //เราต้องดึงค่ามาจาก store เลยต้องมาcheck initial state ว่าถ้ามีค่าให้เอาค่ามาโชว์
+    if(this.$route.params && this.$route.params.id) return {...this.$store.state.books[this.$route.params.id]}
+    //ถ้าthis.$route.params(ตัว/id)กับthis.$route.params.id(คือid)มีค่า ให้เอาค่าจาก store มาเป็นโชว์
+    //ค่าที่โชว์จะเอามาจากid ซึ่งidจะใช้เป็นindexของarray
+    else return {
       name:"",
       description:"",
       date: "",
       author: "",
       rating: 0,
-      cover: "https://data.whicdn.com/images/331489284/original.jpg",
-      books: this.$store.state.books
+      cover: "https://data.whicdn.com/images/331489284/original.jpg"
+      // books: this.$store.state.books ลบออก
     }
   },
   methods: {
     ...mapActions([
       "addBook"
-    ]),
-    testSubmit(){
-      console.log("name :",this.name,"desc :",this.description);
-    }
+    ])
+    // testSubmit(){  ไม่จำเป็นต้องใช้
+    //   console.log("name :",this.name,"desc :",this.description);
+    // }
   },
   computed: {
     textButton(){
       if(this.$route.path == "/add-book") return "ADD BOOK"; //check path as add or edit
       else return "EDIT BOOK"
     }
-  },
-  watch:{
-    books(){
-      console.log("test log books from store",this.$store.state.books)
-    }
   }
+  // watch:{  ลบออก
+  //   books(){
+  //     console.log("test log books from store",this.$store.state.books)
+  //   }
+  // }
 
 };
 </script>
