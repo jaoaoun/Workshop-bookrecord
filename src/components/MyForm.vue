@@ -11,7 +11,7 @@
       })
     "
   > -->
-  <form @submit.prevent="addBook({
+  <form @submit.prevent="swiftFunc({ //8)เอาswiftFuncแทนaddBook
         name,
         description,
         date,
@@ -92,8 +92,14 @@ export default {
   },
   methods: {
     ...mapActions([
-      "addBook"
-    ])
+      "addBook",
+      "editBook" //4)รับค่าeditBookมา
+    ]),
+    customEditBook(data){
+      //5)รับค่ามาจากaddbook แล้วบวกเพิ่ม index
+      this.editBook({data,index:this.$route.params.id})
+      //6)ให้ส่งค่าpayloadไปคือindexแล้วก็มีdata=ค่าที่ถูกส่งมา (data:book)
+    }
     // testSubmit(){  ไม่จำเป็นต้องใช้
     //   console.log("name :",this.name,"desc :",this.description);
     // }
@@ -102,7 +108,12 @@ export default {
     textButton(){
       if(this.$route.path == "/add-book") return "ADD BOOK"; //check path as add or edit
       else return "EDIT BOOK"
+    }, //7)อยากให้เช็คทุกครั้งใช้computed
+    swiftFunc(){
+      if(this.$route.path == "/add-book") return this.addBook;
+      else return this.customEditBook;
     }
+
   }
   // watch:{  ลบออก
   //   books(){
