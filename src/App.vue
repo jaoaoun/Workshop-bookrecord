@@ -1,12 +1,19 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <my-navbar/>
     <router-view/>
   </div>
 </template>
+
+<script>
+import MyNavbar from "./components/MyNavbar" //การimport
+export default {
+  name: "App",
+  components: {
+    MyNavbar //การregister
+  }
+}
+</script>
 
 <style>
 #app {
