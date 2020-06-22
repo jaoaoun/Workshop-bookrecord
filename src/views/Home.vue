@@ -3,11 +3,12 @@
     <h1>My Book</h1>
     <div class="card-deck">
       <my-card 
-      v-for="(book,index) in $store.state.books"
+      v-for="(book,index) in $store.state.books" 
           :bookDetail="book"
           :index="index"
-      />
-    </div>
+      /> 
+      <!-- for book in store / pull data from store -->
+    </div> 
   </div>
 </template>
 
